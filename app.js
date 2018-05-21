@@ -22,6 +22,20 @@ db.once("open", () => {
     console.log("db connection successful");
 });
 
+app.use((req, res, next) => {
+    // * means it's okay to make requests to this API from anywhere
+    res.header("Access-Control-Allow-Origin", "*");
+    // TODO: find out what this means:
+    res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept");
+
+    if(req.method === "OPTION") {
+        res.header("Access-Control-Allow-Methods", "PUT, POST, DELETE");
+        return res.status(200).json({});
+    }
+
+    next();
+})
+
 app.use("/questions", routes);
 
 // catch 404 and forward to error handler

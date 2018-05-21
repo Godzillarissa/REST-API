@@ -7,7 +7,7 @@ const router = express.Router();
 // Route for questions collection
 router.get("/", (req, res) => {
     res.json({
-        response : "Yeu sent me a GET request"
+        response : "You sent me a GET request"
     });
 });
 
@@ -42,7 +42,7 @@ router.post("/:qID/answers", (req, res) => {
 // Edit a specific answer
 router.put("/:qID/answers/:aID", (req, res) => {
     res.json({
-        response: "Your sent me a PUT request to /answers",
+        response: "You sent me a PUT request to /answers",
         questionId: req.params.qID,
         answerId: req.params.aID,
         body: req.body
@@ -73,7 +73,7 @@ router.post("/:qID/answers/:aID/vote-:dir",
         }
     }, (req, res) => {
     res.json({
-        response: "Your sent me a POST request to /vote-" + req.params.dir,
+        response: "You sent me a POST request to /vote-" + req.params.dir,
         questionId: req.params.qID,
         answerId: req.params.aID,
         vote: req.params.dir
